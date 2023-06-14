@@ -76,25 +76,32 @@ function Profil() {
           <h1>
             Welcome back
             <br />
-            {userFirstame} {userLastname}
+            {!editMode ? (
+              <span>
+                {" "}
+                {userFirstame} {userLastname}{" "}
+              </span>
+            ) : null}
           </h1>
           {editMode ? (
-            <div className="editContainer">
-              <input
-                className="editInput"
-                type="text"
-                placeholder={userFirstame}
-                onChange={(e) => setFirstName(e.target.value)}
-                value={firstName}
-              />
-              <input
-                className="editInput"
-                type="text"
-                placeholder={userLastname}
-                onChange={(e) => setLastName(e.target.value)}
-                value={lastName}
-              />
-              <div>
+            <div className="edit-container">
+              <div className="inputsContainer">
+                <input
+                  className="editInput"
+                  type="text"
+                  placeholder={userFirstame}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  value={firstName}
+                />
+                <input
+                  className="editInput"
+                  type="text"
+                  placeholder={userLastname}
+                  onChange={(e) => setLastName(e.target.value)}
+                  value={lastName}
+                />
+              </div>
+              <div className="editButtonsContainer">
                 <button className="edit-button" onClick={updateProfile}>
                   Save
                 </button>
