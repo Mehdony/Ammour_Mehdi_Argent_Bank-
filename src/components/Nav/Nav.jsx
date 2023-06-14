@@ -9,9 +9,12 @@ const Nav = () => {
   const dispatch = useDispatch();
   const userSelector = useSelector((state) => state.user);
   const { firstname } = userSelector;
+  const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
   const handleLogout = async (e) => {
     e.preventDefault();
+    localStorage.removeItem("token");
+    localStorage.removeItem("isAuthenticated");
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("isAuthenticated");
     dispatch(logout());
@@ -28,7 +31,7 @@ const Nav = () => {
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
       <div className="nav-link-container">
-        {isAuthenticated ? (
+        {token ? (
           <>
             <Link className="main-nav-item" to="/sign-in">
               <i className="fa fa-user-circle"></i>
