@@ -1,6 +1,7 @@
 import "./App.css";
 import Profil from "./Pages/Profil/Profil";
 import Public from "./Pages/Public/Public";
+import SignIn from "./Pages/SignIn/SignIn";
 import RequireAuth from "./auth/RequireAuth";
 import Footer from "./components/Footer/Footer";
 import Layout from "./components/Layout";
@@ -14,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Public />} />
-          {/* <Route path="sign-in" element={<Login />} /> */}
+          <Route path="sign-in" element={<SignIn />} />
           {/* <Route path="signup" element={<Signup />} /> */}
 
           <Route element={<RequireAuth />}>

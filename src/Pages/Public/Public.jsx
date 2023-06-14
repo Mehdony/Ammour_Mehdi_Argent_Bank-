@@ -6,7 +6,6 @@ function Public() {
     <>
       <Hero />;
       <Features />;
-      
     </>
   );
 }
