@@ -27,7 +27,6 @@ function Profil() {
   const getProfile = async () => {
     try {
       const user = await getUserData();
-      console.log("user", user);
       dispatch(
         setCredentials({
           firstname: user.data.body.firstName,
@@ -65,9 +64,8 @@ function Profil() {
 
   useEffect(() => {
     getProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // console.log(firstName + " " + lastName);
 
   return (
     <>

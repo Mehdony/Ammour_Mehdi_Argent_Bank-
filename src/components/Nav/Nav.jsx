@@ -5,18 +5,16 @@ import { logout } from "../../auth/auth";
 
 const Nav = () => {
   const selector = useSelector((state) => state.auth);
+  // eslint-disable-next-line no-unused-vars
   const { isAuthenticated } = selector;
   const dispatch = useDispatch();
   const userSelector = useSelector((state) => state.user);
   const { firstname } = userSelector;
-  const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+  const token =
+    localStorage.getItem("token") || sessionStorage.getItem("token");
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    localStorage.removeItem("token");
-    localStorage.removeItem("isAuthenticated");
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("isAuthenticated");
     dispatch(logout());
   };
 
@@ -38,13 +36,13 @@ const Nav = () => {
               {firstname}
             </Link>
             <Link className="main-nav-item" onClick={handleLogout} to="/">
-            <i className="fa fa-sign-out"></i>
+              <i className="fa fa-sign-out"></i>
               Sign Out
             </Link>
           </>
         ) : (
-            <Link className="main-nav-item" to="/sign-in">
-              <i className="fa fa-sign-in"></i>
+          <Link className="main-nav-item" to="/sign-in">
+            <i className="fa fa-sign-in"></i>
             Sign In
           </Link>
         )}

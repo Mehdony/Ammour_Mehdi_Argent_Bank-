@@ -24,16 +24,15 @@ const SignIn = () => {
   // permet de gérer les inputs
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    // console.log(name, value);
     setCredentials((prevState) => ({ ...prevState, [name]: value }));
   };
 
   // permet de gérer la soumission du formulaire
+  // eslint-disable-next-line no-unused-vars
   const [login, { data }] = useLoginMutation();
 
   // permet de gérer la soumission du formulaire
   const handleLogin = async (event) => {
-    console.log("hello");
     event.preventDefault();
     try {
       // fetch l'email et le mdp ( login ) --> voir api.js (methode login)

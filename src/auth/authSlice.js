@@ -1,21 +1,27 @@
 // authSlice.js
 
-import { createSlice } from '@reduxjs/toolkit';
-
+import { createSlice } from "@reduxjs/toolkit";
 
 // on determine l'état initial de notre store
 const initialState = {
-  isAuthenticated: sessionStorage.getItem('isAuthenticated')  ? true  : false,
+  isAuthenticated: sessionStorage.getItem("isAuthenticated")
+    ? true
+    : localStorage.getItem("isAuthenticated")
+    ? true
+    : false,
   user: null,
-  token: sessionStorage.getItem('token') ? sessionStorage.getItem('token') : localStorage.getItem('token') ? localStorage.getItem('token') : null,
+  token: sessionStorage.getItem("token")
+    ? sessionStorage.getItem("token")
+    : localStorage.getItem("token")
+    ? localStorage.getItem("token")
+    : null,
   error: null,
 };
-
 
 // on crée un slice qui va contenir nos reducers
 // les reducers sont des fonctions qui vont modifier l'état du store
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     // loginSuccess est un reducer qui va modifier l'état du store
@@ -43,10 +49,16 @@ const authSlice = createSlice({
     getUserInfosSuccess(state, action) {
       state.user = action.payload;
       state.error = null;
-    }
+    },
   },
 });
 
-export const { loginSuccess, loginFailure, logoutSuccess, logoutFailure, getUserInfosSuccess } = authSlice.actions;
+export const {
+  loginSuccess,
+  loginFailure,
+  logoutSuccess,
+  logoutFailure,
+  getUserInfosSuccess,
+} = authSlice.actions;
 
 export default authSlice.reducer;

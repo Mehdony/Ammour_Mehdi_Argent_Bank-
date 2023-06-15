@@ -38,6 +38,9 @@ fails. However, the implementation of the actual logout functionality is missing
 needs to be added. */
   logout = () => async (dispatch) => {
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isAuthenticated");
     try {
       // TODO: call logout endpoint and clear user data from store
       //  clear token from session storage
