@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const dispatch = useDispatch();
-
+// pour verifier si la case remenber me est cochée
   const [checked, setChecked] = useState(false);
 
   // permet de gérer les inputs
@@ -37,8 +37,8 @@ const SignIn = () => {
     try {
       // fetch l'email et le mdp ( login ) --> voir api.js (methode login)
       const result = await login(credentials);
-      console.log("login res", result);
-      // fetch avec le token qu'on vient de récupérer avec login pour récupérer les infos utilisateur --> voir api.js (methode getUserInfos)
+   
+      // permet de dispatcher l'action loginSuccess en lui passant le token ( loginSuccess = authSlice)
       dispatch(loginSuccess(result.data.body.token));
       // save token in session storage
       if (checked) {
@@ -59,6 +59,8 @@ const SignIn = () => {
       setErrorMessage("Invalid email or password");
     }
   };
+
+  
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">

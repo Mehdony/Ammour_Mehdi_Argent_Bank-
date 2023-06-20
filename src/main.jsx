@@ -7,6 +7,7 @@ import store from "./Service/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
+  {/* provider de redux permet de rendre accessible les données à toute l'application */}
     <Provider store={store}>
       <App />
     </Provider>

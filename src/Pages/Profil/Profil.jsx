@@ -26,7 +26,9 @@ function Profil() {
 
   const getProfile = async () => {
     try {
+      // on stock dans user le resultat du fetch ( user = firstname , lastname, status 200 ....)
       const user = await getUserData();
+      // on envoie les données user dans le store de redux ( userSlice)
       dispatch(
         setCredentials({
           firstname: user.data.body.firstName,
@@ -34,6 +36,7 @@ function Profil() {
         })
       );
       // setState((prev) => ({...prev, firstName : user.data.body.firstName)}) ;
+      setFirstName(user.data.body.firstName);
       setLastName(user.data.body.lastName);
     } catch (error) {
       console.log(error);
