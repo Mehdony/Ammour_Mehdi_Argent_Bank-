@@ -1,14 +1,12 @@
 import { useGetUserDataMutation } from "../../user/userApiSlice";
 import { setCredentials } from "../../user/userSlice";
 import "./Profil.css";
-// import { getUserData } from "../../user/user";
 import {
   selectCurrentFirstname,
   selectCurrentLastname,
 } from "../../user/userSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import styles from "./Profil.module.css";
 import { useUpdateUserDataMutation } from "../../user/userApiSlice";
 
 function Profil() {
@@ -16,14 +14,13 @@ function Profil() {
   const [lastName, setLastName] = useState("");
   const [editMode, setEditMode] = useState(false);
   const dispatch = useDispatch();
-  // const [state, setState] = useState({firstName: "", lastName: "", editMode: false});
-
   const [getUserData] = useGetUserDataMutation();
   const [updateUserData] = useUpdateUserDataMutation();
-
   const userFirstame = useSelector(selectCurrentFirstname);
   const userLastname = useSelector(selectCurrentLastname);
 
+
+//  permet de recuperer les données de l'user et de les stocker dans le store de redux
   const getProfile = async () => {
     try {
       // on stock dans user le resultat du fetch ( user = firstname , lastname, status 200 ....)
@@ -43,6 +40,7 @@ function Profil() {
     }
   };
 
+  // permet de mettre à jour les données de l'user
   const updateProfile = async () => {
     if (firstName === "" || lastName === "") {
       alert("Please fill in all fields");

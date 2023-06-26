@@ -18,7 +18,7 @@ const SignIn = () => {
   // permet de gérer les erreurs
   const [errorMessage, setErrorMessage] = useState("");
 
-  // usenavigate
+  // usenavigate permet de naviguer vers une autre page
   const navigate = useNavigate();
 
   // permet de gérer les inputs

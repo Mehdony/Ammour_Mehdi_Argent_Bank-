@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../auth/auth";
 
 const Nav = () => {
+  // permet de recuperer le statut de l'user et son nom s'il est connecté
   const selector = useSelector((state) => state.auth);
   // eslint-disable-next-line no-unused-vars
   const { isAuthenticated } = selector;
