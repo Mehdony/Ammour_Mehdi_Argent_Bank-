@@ -8,10 +8,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3001/api/v1",
+    baseUrl: "http://localhost:3001/api/v1/",
     // le token dans le header permet d'effectuer des requêtes protégées
     // ex pour récupérer des posts d'un utilisateur il faut être connecté
     // si t'es connecté tu as un token dans le header
+    // getState.auth.token permet de récupérer le token dans authSlice.js
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {

@@ -6,10 +6,10 @@ import userReducer from "../user/userSlice";
 
 export const store = configureStore({
   reducer: {
-    // catégorie fetch methods (api.js)
+    // catégorie fetch methods (api.js, userApiSlice.js)
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
-    // gestion des states d'autentification (authSlice.js)
+    // gestion des states  (authSlice.js & userSlice.js)
     auth: authReducer,
     user: userReducer,
   },

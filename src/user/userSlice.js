@@ -8,6 +8,7 @@ const userSlice = createSlice({
   },
   reducers: {
     setCredentials: (state, action) => {
+      // déstructuré car action.payload est un objet qui contient firstname et lastname
       const { firstname, lastname } = action.payload;
       state.firstname = firstname;
       state.lastname = lastname;
@@ -15,14 +16,18 @@ const userSlice = createSlice({
   },
 });
 
+// on exporte les actions
 export const { setCredentials } = userSlice.actions;
 
+// on exporte le reducer
 export default userSlice.reducer;
 
+// permet de mettre la première lettre en majuscule
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+// permet de récupérer le nom et le prénom en majuscule
 export const selectCurrentFirstname = (state) =>
   state.user.firstname && capitalizeFirstLetter(state.user.firstname);
 export const selectCurrentLastname = (state) =>

@@ -13,9 +13,15 @@ function Profil() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [editMode, setEditMode] = useState(false);
+
+  // permettra de modifier le store de redux 
   const dispatch = useDispatch();
+
+  // on récupère les methodes fetch 
   const [getUserData] = useGetUserDataMutation();
   const [updateUserData] = useUpdateUserDataMutation();
+
+  // Permet de recuperer les données de l'user dans le store de redux
   const userFirstame = useSelector(selectCurrentFirstname);
   const userLastname = useSelector(selectCurrentLastname);
 
@@ -63,6 +69,7 @@ function Profil() {
     setEditMode(!editMode);
   };
 
+  // permet de recuperer les données de l'user au chargement de la page
   useEffect(() => {
     getProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps

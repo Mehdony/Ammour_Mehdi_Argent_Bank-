@@ -9,8 +9,10 @@ const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        {/* public */}
         <Route index element={<Public />} />
         <Route path="sign-in" element={<SignIn />} />
+        {/* protégé */}
         <Route element={<RequireAuth />}>
           <Route path="profil" element={<Profil />} />
         </Route>
@@ -20,3 +22,5 @@ const Routing = () => {
 };
 
 export default Routing;
+
+

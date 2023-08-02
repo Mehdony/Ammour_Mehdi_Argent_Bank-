@@ -6,8 +6,10 @@ import { useLoginMutation } from "../../auth/api";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+  // permettra d'utiliser loginSuccess
   const dispatch = useDispatch();
-// pour verifier si la case remenber me est cochée
+ 
+  // pour verifier si la case remember me est cochée
   const [checked, setChecked] = useState(false);
 
   // permet de gérer les inputs
@@ -15,6 +17,8 @@ const SignIn = () => {
     email: "",
     password: "",
   });
+
+
   // permet de gérer les erreurs
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -28,6 +32,7 @@ const SignIn = () => {
   };
 
   // permet de gérer la soumission du formulaire
+  // useLoginMutation = methode login ( fetch)
   // eslint-disable-next-line no-unused-vars
   const [login, { data }] = useLoginMutation();
 
@@ -37,7 +42,7 @@ const SignIn = () => {
     try {
       // fetch l'email et le mdp ( login ) --> voir api.js (methode login)
       const result = await login(credentials);
-   
+
       // permet de dispatcher l'action loginSuccess en lui passant le token ( loginSuccess = authSlice)
       dispatch(loginSuccess(result.data.body.token));
       // save token in session storage
@@ -60,7 +65,6 @@ const SignIn = () => {
     }
   };
 
-  
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">

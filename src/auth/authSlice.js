@@ -21,8 +21,11 @@ const initialState = {
 // on crée un slice qui va contenir nos reducers
 // les reducers sont des fonctions qui vont modifier l'état du store
 const authSlice = createSlice({
+  // le nom du slice
   name: "auth",
+  // l'état initial du store
   initialState,
+  // les reducers qui sont des fonctions qui vont modifier l'état du store
   reducers: {
     // loginSuccess est un reducer qui va modifier l'état du store
     // plus précisement il va modifier l'état isAuthenticated et token
